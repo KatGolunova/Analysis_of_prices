@@ -7,7 +7,8 @@ def parser(products, list_of_products): # на входе 2 списка
     for pr in list_of_products:
         if products[0] in pr: # первое введенное слово - основа поиска
             # ищем товар в списке товаров (парсим строку)
-            pr_str = pr.translate(str.maketrans('', '', string.punctuation)) # удалим все знаки препинания
+            pr_str = pr.replace('-',' ') # заменяем дефис на пробел
+            pr_str = pr_str.translate(str.maketrans('', '', string.punctuation)) # удалим все знаки препинания
             pr_list = pr_str.split()
             if len(products) == 1 and (products[0] in pr_list): # введено только одно слово
                 ind_list.append(list_of_products.index(pr))  # вытаскиваем индексы найденных строк
