@@ -90,7 +90,7 @@ def check_date(message):
         bot.register_next_step_handler(message, add_product)
 
     def add_product(message):
-        bot.send_message(message.chat.id, "Введите наименование товара (и его описание через пробел):")
+        bot.send_message(message.chat.id, "Введите наименование товара строчными буквами(и его описание через пробел):")
         bot.register_next_step_handler(message, check_product)
 
     def check_product(message):
