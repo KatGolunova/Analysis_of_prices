@@ -5,6 +5,6 @@
 Реализован парсер, позволяющий максимально удобно искать выбранные товары по ключевым словам.
 Движок проекта написан с использованием библиотеки Pandas и ее основного объекта DataFrame.<br>
 <h2>Запуск из терминала проекта:</h2><br>
-<code>pip install pandas tabulate xlrd</code><br>
+<code>pip install pandas tabulate xlrd telebot</code><br>
 <h4>Если в процессе выполнения программы будут ошибки, дополнительно прописать в терминале:</h4><br>
 <code>pip install --upgrade xlrd</code><br>
