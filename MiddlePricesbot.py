@@ -86,7 +86,7 @@ def check_date(message):
         ex_lower = excel_data_df['Unnamed: 0'].apply(lambda x: x.lower()) # все буквы в выборке станут строчными
         list_of_products = ex_lower.tolist() # вывод данных столбца товаров с преобразованием в список строк
 
-        bot.send_message(message.chat.id, 'Нажмите "п", чтобы начать ввод товара')
+        bot.send_message(message.chat.id, 'Отправьте мне любую букву, чтобы начать ввод товара')
         bot.register_next_step_handler(message, add_product)
 
     def add_product(message):
@@ -126,11 +126,11 @@ def check_date(message):
                 data_out_t = data_out.to_markdown()
                 out = f'Средние цены за {d} месяц {g} года (в рублях за килограмм, литр, десяток, изделие)\n{data_out_t}'
                 bot.send_message(message.chat.id, out)  # вывод итоговой таблицы
-                bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text='Выборка окончена')
+                bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text='Выборка окончена')
 
             elif call.data == 'list_prod':
                 choice_out = '\n'.join(choice_list)
                 bot.send_message(message.chat.id, f'{choice_out}')
-                bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text='Выборка окончена')
+                bot.answer_callback_query(callback_query_id=call.id, show_alert=False, text='Выборка окончена')
 
 bot.polling(none_stop = True)
