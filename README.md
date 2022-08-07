@@ -6,6 +6,6 @@
 Движок проекта написан с использованием библиотеки Pandas и ее основного объекта DataFrame.<br>
 Проект учебный, поэтому будет дорабатываться и дополняться функционалом. <br>
 <h2>Запуск из терминала проекта:</h2><br>
-<code>pip install pandas tabulate xlrd pyTelegramBotAPI config</code><br>
+<code>pip install pandas tabulate xlrd pyTelegramBotAPI</code><br>
 <h4>Если в процессе выполнения программы будут ошибки, дополнительно прописать в терминале:</h4><br>
 <code>pip install --upgrade xlrd</code><br>
