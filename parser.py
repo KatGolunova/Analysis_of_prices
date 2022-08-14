@@ -1,6 +1,9 @@
 import string
+import requests
 
 # функция поиска товара по ключевым словам, где первое слово - основное
+
+
 def parser(products, list_of_products): # на входе 2 списка
     ind_list = []
     choicelist = []
@@ -20,3 +23,10 @@ def parser(products, list_of_products): # на входе 2 списка
                         choicelist.append(pr)
     list_item = [ind_list, choicelist] # на выходе список из 2-х списков: индексов и товаров
     return list_item
+
+# функция подстановки шаблонов url адресов:
+
+def url_pars (*args):
+    for i in args:
+           r = requests.get(i)
+           if r.status_code == 200: return i
