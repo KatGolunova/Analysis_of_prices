@@ -3,6 +3,7 @@ import config
 from telebot import types
 import pandas as pd
 from parser import parser # импортируем функцию поиска товара
+from parser import url_pars # импортируем функцию поиска нужного шаблона адреса url
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -74,14 +75,15 @@ def check_date(message):
             ob_list[ob_list.index('г.Минск')] = 'г. Минск'
 
         # получаем в переменную Excel-файл с сайта Белстата
-        url = 'https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Average_prices-'+d+'-'+g+'.xls'
+        url_1 = 'https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Average_prices-' + d + '-' + g + '.xls'
+        url_2 = 'https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/' + g + '/Average_prices-' + d + '-' + g + '.xls'
         ob_list_col = ob_list.copy()
 
         # к списку областей добавляем в начало колонку товаров (исходное название столбца DataFrame не меняем)
         ob_list_col.insert(0, 'Unnamed: 0')
 
         # читаем Excel файл, начиная с 7-й строки, в объект DataFrame
-        excel_data_df = pd.read_excel(url, usecols = ob_list_col, header = 6)
+        excel_data_df = pd.read_excel(url_pars(url_1, url_2), usecols = ob_list_col, header = 6)
 
         ex_lower = excel_data_df['Unnamed: 0'].apply(lambda x: x.lower()) # все буквы в выборке станут строчными
         list_of_products = ex_lower.tolist() # вывод данных столбца товаров с преобразованием в список строк
