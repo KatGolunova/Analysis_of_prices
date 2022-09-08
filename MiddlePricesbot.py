@@ -23,15 +23,13 @@ def welkom_to_my_bot(message):
      "Последовательно вызывайте команды меню для ввода данных:\n"
      "/inputdate - для ввода даты\n"
      "/inputregion - для ввода области (чтобы узнать средние цены по стране - пишите Беларусь)\n"
-     "/start - в экран приветствия"
-    .format(message.from_user, bot.get_me()), parse_mode='html')
-
+     "/start - в экран приветствия".format(message.from_user, bot.get_me()), parse_mode='html')
 
 @bot.message_handler(commands=['inputdate'])
 def add_date(message):
     bot.send_message(message.chat.id,
                          "Введите интересующий Вас месяц и год в формате ММГГГГ "
-                         "(например, '062022')")
+                         "(например, '072022')")
     bot.register_next_step_handler(message, check_date)
 
 def check_date(message):
@@ -92,7 +90,7 @@ def check_date(message):
         bot.register_next_step_handler(message, add_product)
 
     def add_product(message):
-        bot.send_message(message.chat.id, "Введите наименование товара строчными буквами(и его описание через пробел):")
+        bot.send_message(message.chat.id, "Введите наименование товара строчными буквами (и его описание через пробел):")
         bot.register_next_step_handler(message, check_product)
 
     def check_product(message):
